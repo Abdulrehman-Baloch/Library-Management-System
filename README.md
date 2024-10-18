@@ -78,7 +78,7 @@ CREATE TABLE USERS (
 
 ### Books Table
 ```sql
-CREATE TABLE BOOKS (
+CREATE TABLE BOOK (
   book_id VARCHAR(50) PRIMARY KEY,
   title VARCHAR(100),
   author VARCHAR(100),
@@ -91,6 +91,18 @@ CREATE TABLE BOOKS (
 );
 ```
 
+### LoanBook Table
+```sql
+CREATE TABLE LoanBook (
+  user_id VARCHAR(50) NOT NULL,
+  book_id VARCHAR(50) NOT NULL,
+  duration INT NOT NULL,
+  PRIMARY KEY(user_id,book_id),
+  FOREIGN KEY(user_id) REFERENCES USERS(user_id),
+  FOREIGN KEY(book_id) REFERENCES BOOK(book_id) 
+);
+```
+
 ## Future Enhancements
 
 - **Graphical User Interface (GUI)**: Convert the current console-based system into a GUI-based application for improved usability.
@@ -100,11 +112,3 @@ CREATE TABLE BOOKS (
 ## Contribution
 
 Feel free to contribute to this project by opening issues or submitting pull requests. Contributions are welcome to improve the functionality or optimize the existing code.
-
-## License
-
-This project is licensed under the MIT License.
-
----
-
-Let me know if you want any changes or additional sections!
